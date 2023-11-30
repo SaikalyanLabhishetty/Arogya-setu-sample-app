@@ -100,7 +100,8 @@ slots.forEach((slot) => {
         // Decrement the available doses in the slot
         slotAvailability[timeSlot]--;
   
-        res.send('Data saved successfully');
+        // Send the success.html file
+        res.sendFile(__dirname + '/public/html/success.html');
       } else {
         // No available doses in the slot, inform the user to select another slot
         res.send('No available doses in this slot. Please select another slot.');
@@ -110,7 +111,7 @@ slots.forEach((slot) => {
       res.sendFile(__dirname + '/public/html/error.html');
     }
   });
-
+  
   
 const adminCredentials = {
     username: 'admin',
