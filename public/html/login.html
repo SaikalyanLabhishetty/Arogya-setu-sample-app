@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      display: flex;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .user-login {
+      flex: 1;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px 0 0 8px;
+    }
+
+    .admin-login {
+      flex: 1;
+      background-color: #3498db;
+      color: #fff;
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label, input {
+      margin-bottom: 10px;
+    }
+
+    input {
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <div class="user-login">
+    <h2>User Login</h2>
+    <form action="/user-login" method="post">
+      <label for="userUsername">Username:</label>
+      <input type="text" id="userUsername" name="userUsername" required>
+
+      <label for="userPassword">Password:</label>
+      <input type="password" id="userPassword" name="userPassword" required>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <div class="admin-login">
+    <h2>Admin Login</h2>
+    <form id="adminLoginForm" action="/admin-login" method="post" onsubmit="return loginAdmin()">
+        <label for="adminUsername">Admin Username:</label>
+        <input type="text" id="adminUsername" name="adminUsername" required>
+      
+        <label for="adminPassword">Admin Password:</label>
+        <input type="password" id="adminPassword" name="adminPassword" required>
+      
+        <button type="submit">Login as Admin</button>
+      </form>
+  </div>
+</div>
+
+</body>
+<script>
+    function loginAdmin() {
+      var adminUsername = document.getElementById('adminUsername').value;
+      var adminPassword = document.getElementById('adminPassword').value;
+      return true;
+    }
+  </script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaccine Dose Selection</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      text-align: right;
+    }
+
+    .dose-container {
+      text-align: center;
+      flex: 1;
+      padding: 20px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header section with logout button -->
+<header>
+  <button id="logoutButton" onclick="logout()">Logout</button>
+</header>
+
+<div class="dose-container">
+  <h2>Select Your Vaccine Dose</h2>
+  <form id="doseForm" action="/submit-dose" method="post" onsubmit="return submitDose()">
+    <label for="vaccineDose">Choose Dose:</label>
+    <select id="vaccineDose" name="vaccineDose" required>
+      <option value="dose-1">Dose 1</option>
+      <option value="dose-2">Dose 2</option>
+    </select>
+
+    <label for="timeSlot">Choose Time Slot:</label>
+    <select id="timeSlot" name="timeSlot" required>
+      <option value="10am">10:00 AM</option>
+      <option value="11am">11:00 AM</option>
+      <option value="12pm">12:00 PM</option>
+      <option value="1pm">1:00 PM</option>
+      <option value="2pm">2:00 PM</option>
+    </select>
+
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<script>
+  function submitDose() {
+    // Perform additional client-side validation if needed
+    var doseType = document.getElementById('vaccineDose').value;
+    var timeSlot = document.getElementById('timeSlot').value;
+
+    if (doseType === '' || timeSlot === '') {
+      // Display an error message or perform any other desired action
+      alert('Please select both dose type and time slot.');
+      return false;
+    }
+    return true;
+  }
+
+  // Logout function
+  function logout() {
+    window.location.href = '/logout';
+  }
+</script>
+</body>
+</html>
